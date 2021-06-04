@@ -1,7 +1,7 @@
 /* Global Variables */
 //api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}&appid={API key
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather?zip=";
-const key = "625542cb6c623287c968f09aa72f2b15";
+const key = "625542cb6c623287c968f09aa72f2b15&units=imperial";
 
 const generateButton = document.querySelector("#generate");
 
@@ -59,6 +59,7 @@ generateButton.addEventListener("click", ()=>{
     getWeather(baseUrl, zipcode, key)
     .then(function(data){
         postData("/addData", {"temp": data.main.temp, "date": newDate, "message": feelings});
-    })
-    .then(updateUI());
+    }).then(()=>updateUI());
+
+
 });
